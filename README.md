@@ -1,109 +1,131 @@
----
-
-# 🎙️ Streamlit Speech-to-Text App (Google Cloud)  
-🚀 A simple yet powerful **speech-to-text app** that records audio from your **microphone** and transcribes it using **Google Cloud Speech-to-Text API**.
+Here’s your updated `README.md` file following the requested format:
 
 ---
 
-## 🌟 Features
-✅ **Record audio** from your PC microphone  
-✅ **Transcribe speech to text** using Google Cloud Speech API  
-✅ **Interactive Streamlit UI** with buttons for recording & transcribing  
-✅ **Supports multiple languages** (can be extended)  
-✅ **Real-time processing**  
+# 🎙️ Streamlit Speech-to-Text App (Google Cloud)
+
+A powerful **speech-to-text application** built with Streamlit and Google Cloud Speech-to-Text API. It allows users to record audio, transcribe it into text in real-time, and supports multiple languages. Perfect for demos, accessibility solutions, and speech analysis projects.
 
 ---
 
-## 📌 Demo Screenshot
-![image](https://github.com/user-attachments/assets/a7fdbcb3-ac88-478b-8a25-b69fb0beb987)
+## 🌟 What the Code Does
+
+1. **Records audio** from your microphone using Streamlit’s interface.  
+2. **Processes the audio** and sends it to Google Cloud’s Speech-to-Text API.  
+3. **Transcribes speech into text** in real-time.  
+4. **Supports multiple languages** with customizable options for recognition.  
+5. Provides an **interactive UI** for starting/stopping recordings and viewing transcriptions.
 
 ---
 
-## 📦 Installation
+## 🚀 How to Use It (Step by Step)
 
-### **1. Clone the Repository**
+### 1. Clone the Repository
 ```bash
 git clone https://github.com/your-username/streamlit-speech-to-text.git
 cd streamlit-speech-to-text
 ```
 
-### **2. Create a Virtual Environment**
+### 2. Set Up the Virtual Environment
 ```bash
 python -m venv venv
 source venv/bin/activate  # For macOS/Linux
 venv\Scripts\activate      # For Windows
 ```
 
-### **3. Install Dependencies**
+### 3. Install Dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-### **4. Set Up Google Cloud Speech-to-Text API**
-1. Go to [Google Cloud Console](https://console.cloud.google.com/)
-2. Create a new project and **enable Speech-to-Text API**.
-3. Create a **Service Account** and download the **JSON key file**.
-4. Set the environment variable:
-   ```bash
-   export GOOGLE_APPLICATION_CREDENTIALS="path/to/your-key-file.json"
-   ```
-   On Windows (PowerShell):
-   ```powershell
-   $env:GOOGLE_APPLICATION_CREDENTIALS="path\to\your-key-file.json"
-   ```
+### 4. Configure Google Cloud Speech-to-Text API
+1. Go to the [Google Cloud Console](https://console.cloud.google.com/).
+2. Create a new project and enable the **Speech-to-Text API**.
+3. Generate a **Service Account** and download the JSON key file.
+4. Set the environment variable for your system:
+   - On macOS/Linux:
+     ```bash
+     export GOOGLE_APPLICATION_CREDENTIALS="path/to/your-key-file.json"
+     ```
+   - On Windows (PowerShell):
+     ```powershell
+     $env:GOOGLE_APPLICATION_CREDENTIALS="path\to\your-key-file.json"
+     ```
 
----
-
-## 🎤 How to Use
-
-### **1. Run the Streamlit App**
+### 5. Run the App
 ```bash
 streamlit run app.py
 ```
 
-### **2. Using the App**
-- Click **"Start Recording"** to record audio (default: **5 seconds**).
-- Click **"Transcribe Audio"** to convert the speech into text.
-- View and copy your transcribed text.
+### 6. Use the App
+1. Click **"Start Recording"** to record audio (default: 5 seconds).
+2. Click **"Transcribe Audio"** to process the recording and convert speech into text.
+3. Copy or use the transcribed text as needed.
 
 ---
 
-## 🛠️ Project Structure
-```
-streamlit-speech-to-text/
-│── app.py                     # Main Streamlit app
-│── requirements.txt            # Dependencies
-│── README.md                   # Documentation
-│── recorded_audio.wav          # Temporary audio file (generated)
-│── your-service-account.json   # Google Cloud credentials (DO NOT commit)
-```
+## ⚙️ What Happens in Each Step
+
+### Step 1: **Record Audio**
+- The `record_audio()` function uses the system microphone to record audio and saves it in `.wav` format for processing.
+
+### Step 2: **Send to Google Cloud API**
+- The `.wav` file is sent to Google Cloud Speech-to-Text API using the `speech.RecognitionConfig` parameters for encoding, sample rate, and language.
+
+### Step 3: **Transcription**
+- Google Cloud processes the audio and returns the transcription in text format, which is displayed on the Streamlit interface.
+
+### Step 4: **Interactive UI**
+- Streamlit's UI updates dynamically, providing buttons to start/stop recording, initiate transcription, and show real-time results.
 
 ---
 
-## 🔧 Customization
+## 🖼️ Screenshots
 
-### **1. Change Recording Duration**
-Modify the `record_audio()` function in `app.py`:
+### Main UI
+![Main Interface](https://github.com/user-attachments/assets/a7fdbcb3-ac88-478b-8a25-b69fb0beb987)
+
+---
+---
+
+## 📂 Role of Each File
+
+### `app.py`
+- The main application script that contains the Streamlit UI and logic for recording, processing, and transcribing audio.
+
+### `requirements.txt`
+- Contains all necessary Python dependencies to run the app (e.g., Streamlit, Google Cloud libraries).
+
+### `recorded_audio.wav`
+- Temporary file created during the recording process. Automatically overwritten for each new recording.
+
+### `your-service-account.json`
+- Google Cloud credentials file for authenticating API requests. **(Do not share or commit this file)**.
+
+---
+
+## 🛠️ Customization Options
+
+### 1. Change Recording Duration
+In `app.py`, modify the `record_audio()` function:
 ```python
-record_audio(file_path, record_seconds=10)  # Change to 10 seconds
+record_audio(file_path, record_seconds=10)  # Record for 10 seconds
 ```
 
-### **2. Support for Multiple Languages**
-Modify the `language_code` in `RecognitionConfig`:
+### 2. Add Support for More Languages
+Update the `RecognitionConfig`:
 ```python
 config = speech.RecognitionConfig(
-    encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
-    sample_rate_hertz=44100,
-    language_code="es-ES",  # Spanish
+    language_code="es-ES",  # Change language code to Spanish
 )
 ```
 
-### **3. Convert MP3 to WAV for More Formats**
-Install `pydub`:
+### 3. Enable MP3 Format
+Install `pydub` for format conversion:
 ```bash
 pip install pydub
 ```
-Modify `app.py`:
+Modify the `app.py` script to convert MP3 to WAV:
 ```python
 from pydub import AudioSegment
 
@@ -114,23 +136,23 @@ audio.export("output.wav", format="wav")
 ---
 
 ## 📝 License
-This project is **open-source** and available under the **MIT License**.
+This project is open-source and available under the **MIT License**.
 
 ---
 
 ## 💡 Contributing
-Got an idea or found a bug? Feel free to:
-- **Fork this repository**
-- **Create a new branch**
-- **Submit a pull request**
+Found an issue or have an idea?  
+1. Fork this repository.  
+2. Create a new branch.  
+3. Submit a pull request.
 
 ---
 
 ## 📧 Contact
 🔹 **Aitrika Chakraborty**  
 🔹 **GitHub:** [aitrika-idealabs](https://github.com/aitrika-idealabs)  
-🔹 **Email:** aitrika@idealabs.fyi
+🔹 **Email:** aitrika@idealabs.fyi  
 
 ---
 
-Copy and paste this into your `README.md`, and you're all set! Let me know if you need further assistance! 🚀
+Let me know if you’d like to refine this further! 🚀
