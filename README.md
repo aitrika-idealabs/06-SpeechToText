@@ -15,8 +15,7 @@
 ---
 
 ## 📌 Demo Screenshot
-![Speech-to-Text App Demo](![image](https://github.com/user-attachments/assets/ad923ae2-3096-4dbe-8dc5-4ce8277e7fc4)
-)  
+![image](https://github.com/user-attachments/assets/a7fdbcb3-ac88-478b-8a25-b69fb0beb987)
 
 ---
 
