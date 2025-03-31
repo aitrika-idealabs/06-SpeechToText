@@ -1,7 +1,3 @@
-Here’s your updated `README.md` file following the requested format:
-
----
-
 # 🎙️ Streamlit Speech-to-Text App (Google Cloud)
 
 A powerful **speech-to-text application** built with Streamlit and Google Cloud Speech-to-Text API. It allows users to record audio, transcribe it into text in real-time, and supports multiple languages. Perfect for demos, accessibility solutions, and speech analysis projects.
