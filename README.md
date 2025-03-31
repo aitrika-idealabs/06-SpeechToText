@@ -18,7 +18,7 @@ A powerful **speech-to-text application** built with Streamlit and Google Cloud 
 
 ### 1. Clone the Repository
 ```bash
-git clone [https://github.com/aitrika-idealabs/streamlit-speech-to-text.git](https://github.com/aitrika-idealabs/06-SpeechToText.git)
+git clone https://github.com/aitrika-idealabs/streamlit-speech-to-text.git
 cd streamlit-speech-to-text
 ```
 
